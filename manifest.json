@@ -4,6 +4,9 @@
       "dependencies": [{
         "name": "transposit/sendgrid:v3.*.*",
         "alias": "sendgrid"
+      }, {
+        "name": "transposit/twilio:v1.*.*",
+        "alias": "twilio"
       }],
       "operations": [{
         "id": "hello_world",
