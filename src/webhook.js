@@ -1,4 +1,6 @@
 // This operation is what is called when you put the webhook URL into Twilio.
+// Learn more at https://www.transposit.com/docs/building/webhooks/
+
 ({ http_event }) => {
   let body = http_event.parsed_body;
   
