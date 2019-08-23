@@ -42,7 +42,7 @@
       "source": "src",
       "userSettingsDisplay": "GENERATED"
     },
-    "description": "Sample API calls and Webhook functions to start using Twilio and SendGrid in Transposit.",
+    "description": "Sample API calls and Webhook functions to start using Twilio and SendGrid in Transposit",
     "displayName": "Twilio SendGrid Demo"
   }
 }
