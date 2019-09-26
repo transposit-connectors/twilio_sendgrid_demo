@@ -7,7 +7,7 @@
   api.run('this.send_message');			// Calls the send_message operation for Twilio.
   api.run('this.send_mail');			// Calls the send_mail operation for SendGrid.
   
-  return { status_code: 200 };
+  return { status_code: 200, headers: { "Content-Type": "application/xml" } };
 }
 
 /*
