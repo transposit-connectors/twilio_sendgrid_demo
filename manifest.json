@@ -1,43 +1,52 @@
 {
   "v2": {
     "transposit": {
-      "dependencies": [{
-        "name": "transposit/sendgrid:v3.*.*",
-        "alias": "sendgrid"
-      }, {
-        "name": "transposit/twilio:v1.*.*",
-        "alias": "twilio"
-      }],
-      "operations": [{
-        "id": "send_mail",
-        "description": "An example SendGrid API call to send a single email.",
-        "tql": {
-          "tql": "SELECT * FROM sendgrid.send_mail\n  WHERE $body=(SELECT {\n    'personalizations' : [ {\n      'to' : [ {\n        'name' : 'Example User',\n        'email' : 'user@example.com'\n      } ],\n    } ],\n    'subject' : 'This is an email subject',\n    'content' : [ {\n      'type' : 'text/html',\t\t\t\t\t-- The type of document. This allows you to input html. If you just want plaintext, use text/plain\n      'value' : 'This is the email body!'\n    } ],\n    'from' : {\n      'name' : 'Your Name',\n      'email' : 'noreply@yourdomain.com'\t-- This will be also sent 'via sendgrid.net' after this email. No replies will be made\n    },\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
-        }
-      }, {
-        "id": "send_message",
-        "description": "An example Twilio API call to send a SMS message.",
-        "tql": {
-          "tql": "SELECT * FROM twilio.send_message\n  WHERE mediaTypeExtension='.json'\n  AND AccountSid='<Twillio Account SID>'\t\t-- Get this from the home page of your Twilio account\n  AND $body=(SELECT {\n    'To' : '+15555555555',\n    'From' : '+11235554567',\t\t\t\t\t-- Your twilio phone number\n    'Body' : 'This is your text message body!'\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
-        }
-      }, {
-        "id": "webhook",
-        "description": "An example webhook function that you can run with Twilio.",
-        "function": {
-          "parameters": [{
-            "name": "http_event",
-            "default": {
-              "text": "{\"http_method\": \"GET\", \"query_parameters\": {}, \"headers\": {}, \"body\": \"\"}"
-            },
-            "type": "OBJECT"
-          }],
-          "js": "webhook.js"
+      "dependencies": [
+        {
+          "name": "transposit/sendgrid:v3.*.*",
+          "alias": "sendgrid"
         },
-        "access": {
-          "requireApiKey": true,
-          "webhook": true
+        {
+          "name": "transposit/twilio:v1.*.*",
+          "alias": "twilio"
         }
-      }],
+      ],
+      "operations": [
+        {
+          "id": "send_mail",
+          "description": "An example SendGrid API call to send a single email.",
+          "tql": {
+            "tql": "SELECT * FROM sendgrid.send_mail\n  WHERE $body=(SELECT {\n    'personalizations' : [ {\n      'to' : [ {\n        'name' : 'Example User',\n        'email' : 'user@example.com'\n      } ],\n    } ],\n    'subject' : 'This is an email subject',\n    'content' : [ {\n      'type' : 'text/html',\t\t\t\t\t-- The type of document. This allows you to input html. If you just want plaintext, use text/plain\n      'value' : 'This is the email body!'\n    } ],\n    'from' : {\n      'name' : 'Your Name',\n      'email' : 'noreply@yourdomain.com'\t-- This will be also sent 'via sendgrid.net' after this email. No replies will be made\n    },\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+          }
+        },
+        {
+          "id": "send_message",
+          "description": "An example Twilio API call to send a SMS message.",
+          "tql": {
+            "tql": "SELECT * FROM twilio.send_message\n  WHERE mediaTypeExtension='.json'\n  AND AccountSid='<Twillio Account SID>'\t\t-- Get this from the home page of your Twilio account\n  AND $body=(SELECT {\n    'To' : '+15555555555',\n    'From' : '+11235554567',\t\t\t\t\t-- Your twilio phone number\n    'Body' : 'This is your text message body!'\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+          }
+        },
+        {
+          "id": "webhook",
+          "description": "An example webhook function that you can run with Twilio.",
+          "function": {
+            "parameters": [
+              {
+                "name": "http_event",
+                "default": {
+                  "text": "{\"http_method\": \"GET\", \"query_parameters\": {}, \"headers\": {}, \"body\": \"\"}"
+                },
+                "type": "OBJECT"
+              }
+            ],
+            "js": "webhook.js"
+          },
+          "access": {
+            "requireApiKey": true,
+            "webhook": true
+          }
+        }
+      ],
       "javascriptAPIVersion": "3",
       "source": "src",
       "userSettingsDisplay": "GENERATED"
